@@ -1,0 +1,328 @@
+<html>
+<head>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<style>
+		body {
+  			background-color: #777;
+			background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
+		   padding-top: 80px;
+		   text-align: center;
+		   margin: 0 auto;
+		   font-family: &amp;quot;Cwmagic&amp;quot;,Calibri,Arial,Helvetica,sans-serif;
+		   font-size: 1.2em;
+		   line-height: 1.5em;
+		}
+		 
+		img
+		{
+		   border: 0em;
+		}
+		 
+		h1,
+		h2,
+		h3
+		{
+		   text-align: center;
+		}
+		.float-center {
+		  float: right;
+
+		  position: relative;
+		  left: -50%; /* or right 50% */
+		  text-align: left;
+		}
+		.float-center > .child {
+		  position: relative;
+		  left: 50%;
+		}
+		 
+		.float-left
+		{
+		   float: left;
+		}
+		 
+		.float-right
+		{
+		   float: right;
+		}
+		 
+		.clear-both
+		{
+		   clear: both;
+		}
+		 
+		.shadow
+		{
+		   -webkit-box-shadow: 0.4em 0.4em 0.2em #5C5B5B;
+		   -moz-box-shadow: 0.4em 0.4em 0.2em #5C5B5B;
+		   -o-box-shadow: 0.4em 0.4em 0.2em #5C5B5B;
+		   -ms-box-shadow: 0.4em 0.4em 0.2em #5C5B5B;
+		   box-shadow: 0.4em 0.4em 0.2em #5C5B5B;
+		   margin-right: 0.4em !important;
+		}
+		 
+		.long-box,
+		.small-box
+		{
+		   background-color: #cdcdcd;
+		   padding: 0em 0.3em;
+		   margin: 0em;
+		   margin-bottom: 1em;
+		}
+		 
+		.small-box
+		{
+		   width: 47%;
+		}
+		 
+		p
+		{
+		   margin-top: 0;
+		   margin-bottom: 0.5em;
+		}
+		.block
+		{
+			display: block;
+		}
+		 .inputLabel {
+			padding: 25px 10px;
+			margin: 15px;
+			max-width: 300px
+			font-size: 80%;
+			color: white;
+			transition: background-color 0.5s ease;
+		}
+
+		.refresh {
+			padding: 25px 10px;
+			width: 80%;
+			margin: 5px auto;
+			max-width: 300px
+			font-size: 80%;
+			color: limegreen;
+			
+		}
+
+		*, *:before, *:after {
+		   -moz-box-sizing: border-box; 
+		  -webkit-box-sizing: border-box; 
+		  box-sizing: border-box;
+		}
+
+.one {
+	text-align: center;
+}
+.one label {
+	padding: 0;
+	vertical-align: sub;
+}
+.one .button-wrap {
+  display: inline-block;
+  width: 220px;
+  margin: 10px auto 0;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.one .button-bg {
+  width: 100%;
+  background-color: #000;
+  border-radius: 40px;
+  padding: 3px;
+  color:#fff;
+  transition:all 0.2s ease;
+}
+.one .button-switch {
+  position:relative;
+  left:0px;
+  width: 110px;
+  height: 65px;
+  border:solid 13px;
+  border-radius: 36px;
+  transition:all 0.2s ease;
+  border-color: #dd2222;
+}
+.one .button-active .button-switch { left:105px; }
+.one .button-in, 
+.one .button-out {
+  position:absolute; 
+  transition:all 0.1s ease;
+  padding-top:20px;
+  font-size:2em;
+  text-transform:uppercase;
+  font-weight:bold;
+}
+.one .button-in { margin-left:130px; }
+.one .button-out { margin-left:15px; color:#dd2222; }
+.one .button-active .button-out { color:#fff; }
+.one .button-active .button-in { color:#22dd22; }
+.one .button-active .button-bg { background-color:#000; }
+.one .button-active .button-switch { border-color: #22dd22; }
+
+
+	</style>
+	<div class='long-box ' >
+		<div class='float-left'>
+		<a href='#' class='refresh ' onclick='getState();'>refresh</a>
+		<div class='float-center'>
+		
+		</div>
+	</div>
+	<div class='float-right'>
+		<label class='inputLabel' id='status' >Checking...</label>
+	</div>
+	</div>
+</head>
+<body onload='getState();'>
+
+	<div class='one clear-both'>
+	  <label class='inputLabel'>Outside</label>
+	  <div id='RL0' class='button-wrap' data-id='0'>
+	    <div class='button-bg'>
+	      <div class='button-out'>Off</div>
+	      <div class='button-in'>On</div>
+	      <div class='button-switch'></div>
+	    </div>
+	  </div>
+	</div>
+	<div  class='one'>
+	  <label class='inputLabel'>Inside</label>
+	  <div id='RL1' class='button-wrap' data-id='1'>
+	    <div class='button-bg'>
+	      <div class='button-out'>Off</div>
+	      <div class='button-in'>On</div>
+	      <div class='button-switch'></div>
+	    </div>
+	  </div>
+	</div>
+	<br></br>
+	
+	
+	
+	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+	<script>
+	var ipaddress = getQueryVariable("ip");
+
+	function getQueryVariable(variable) {
+	  var query = window.location.search.substring(1);
+	  var vars = query.split("&");
+	  for (var i=0;i<vars.length;i++) {
+	    var pair = vars[i].split("=");
+	    if (pair[0] == variable) {
+	      return pair[1];
+	    }
+	  } 
+	  return 'http://192.168.1.15';
+	}
+
+	$('.button-wrap').on('click', function(){
+	  
+	  inputClick($(this).attr('data-id'));
+	});
+
+	function parseTime(timeString)
+	{
+		console.log('parsetime - ' + timeString);
+	  if (timeString == '') return null;
+	  var d = new Date();
+	  var time = timeString.match(/(\\d+)(:(\\d\\d))?\\s*(p?)/i);
+	  d.setHours( parseInt(time[1],10) + ( ( parseInt(time[1],10) < 12 && time[4] ) ? 12 : 0) );
+	  d.setMinutes( parseInt(time[3],10) || 0 );
+	  return d;
+	}
+
+	function post(url, cb) {
+		x=new XMLHttpRequest;
+		x.open('GET',ipaddress + url);
+
+		x.onload = function (e) {
+			console.log('e change', x);
+			if (x.readyState === 4) {
+				if (x.status === 200) {
+		      		console.log(x.responseText);
+		      		var json = JSON.parse(x.responseText);
+		      		if (cb) {
+		      			cb(json);
+		      		}
+		    	} else {
+		      		console.error(x.statusText);
+		    	}
+		  	}
+		};
+
+		x.send();
+	}
+
+	function jsonparser1(url, cb) {
+        $.ajax({
+            type: 'GET',
+            url: ipaddress + url,
+            dataType: "jsonp",
+            success: function (e) {
+               console.log('e change', x);
+			if (x.readyState === 4) {
+				if (x.status === 200) {
+		      		console.log(x.responseText);
+		      		var json = JSON.parse(x.responseText);
+		      		if (cb) {
+		      			cb(json);
+		      		}
+		    	} else {
+		      		console.error(x.statusText);
+		    	}
+		    }
+            },
+        });
+    }        
+
+	function inputClick(num) {
+		buttonClick('/flipinput/'+String(num)+'/');
+	}
+
+	function getState() {
+		buttonClick('/status/');
+	}
+
+	function buttonClick(url) {
+
+		var x = document.getElementById('status');
+		x.innerHTML = 'Checking...';
+
+		post(url, parseResponse);
+	}
+
+
+	function parseResponse(response){
+
+			if (response.ports) {
+				parsePorts(response.ports)
+			}	
+
+			var x = document.getElementById('status');
+			var d = new Date();
+			x.innerHTML = 'Last Updated' + d.toLocaleTimeString();
+
+	}
+
+	function parsePorts(response)
+	{
+		for (i=0; i < 2; i++)
+			{
+
+				var name = 'RL' + String(i);
+				console.log(name + ', ' + response[name]);
+				if (response[name]!=0) {
+					$('#' + name).addClass('button-active');
+					console.log(name + " button-active");
+					
+				} else {
+					$('#' + name).removeClass('button-active');
+					console.log('#' + name + " REMOVE button-active");
+				}
+			}
+	}
+
+
+		
+	</script>
+</body>
+</html>
